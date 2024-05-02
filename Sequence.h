@@ -8,11 +8,11 @@ class Sequence
     virtual T GetLast() = 0;
     virtual T Get() = 0;
     virtual int GetLength() = 0;
-    virtual Sequence<T> *Append() = 0;
-    virtual Sequence<T> *Prepend() = 0;
-    virtual Sequence<T> *InsertAt() = 0;
-    virtual Sequence<T> *GetSubSequence() = 0;
-    virtual Sequence<T> *Concat() = 0;
+    virtual Sequence<T> *Append(T item) = 0;
+    virtual Sequence<T> *Prepend(T item) = 0;
+    virtual Sequence<T> *InsertAt(T item, int index) = 0;
+    virtual Sequence<T> *GetSubSequence(Sequence<T> *seq) = 0;
+    virtual Sequence<T> *Concat(Sequence<T> *seq) = 0;
 };
 
 #endif
