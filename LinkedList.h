@@ -102,7 +102,7 @@ public:
 
     LinkedList<T>* GetSubList(int startIndex, int endIndex)
     {
-        if (startIndex * endIndex < 0 || startIndex >= this->size || endIndex > startIndex)
+        if (startIndex < 0 || endIndex < 0 || startIndex >= this->size || endIndex > startIndex)
         {
             throw std::invalid_argument("Index out of range");
         }
