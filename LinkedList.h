@@ -144,7 +144,7 @@ public:
         this->size++;
     }
 
-    void insertAt(T item, int index)
+    void InsertAt(T item, int index)
     {
         if (index < 0 || index >= this->size)
         {
