@@ -102,7 +102,7 @@ public:
 
     LinkedList<T>* GetSubList(int startIndex, int endIndex)
     {
-        if (startIndex * endIndex < 0 || startIndex >= this->size || endIndex >= this->size)
+        if (startIndex * endIndex < 0 || startIndex >= this->size || endIndex > startIndex)
         {
             throw std::invalid_argument("Index out of range");
         }
@@ -111,18 +111,6 @@ public:
         {
             resultList->Append(this->Get(i));
         }
-        /* another realisation
-        Node *current = this->head;
-        for (int i = 0; i < startIndex; i++)
-        {
-            current = current->pNext;
-        }
-        for (int i = startIndex; i < endIndex; i++)
-        {
-            resultList->Append(current->data);
-            current = current->pNext;
-        }
-        */
         return resultList;
     }
 
@@ -131,7 +119,7 @@ public:
         return this->size;
     }
 
-    void Append(const T item)
+    void Append(T item)
     {
         if (this->head == nullptr)
         {
@@ -173,16 +161,16 @@ public:
         this->size++;
     }
 
-    LinkedList<T>* Concat(LinkedList<T> *list)
+    LinkedList<T>* Concat(LinkedList<T> &list)
     {
         LinkedList<T> *resultList = new LinkedList<T>();
         for (int i = 0; i < this->size; i++)
         {
             resultList->Append(this->Get(i));
         }
-        for (int i = 0; i < list->size; i++)
+        for (int i = 0; i < list.size; i++)
         {
-            resultList->Append(list->Get(i));
+            resultList->Append(list.Get(i));
         }
         return resultList;
     }
