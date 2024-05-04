@@ -97,29 +97,21 @@ public:
 
     MutableListSequence<T> *Concat(Sequence<T> &seq) override
     {
-        MutableListSequence<T> *result = new MutableListSequence<T>(static_cast<MutableListSequence<T> &> (*this));
         for (int i = 0; i < seq.GetLength(); i++)
         {
-            result->Append(seq.Get(i));
+            this->Append(seq.Get(i));
         }
-        return result;
+        return this;
     }
 
     MutableListSequence<T> *GetSubSequence(int startIndex, int endIndex) override
     {
-        if (startIndex * endIndex < 0 || startIndex >= this->list->GetLength() || endIndex > startIndex)
-        {
-            throw std::invalid_argument("Index out of range");
-        }
-        T *elements = new T[endIndex - startIndex + 1];
-        for (int i = 0; i < endIndex - startIndex + 1; i++)
-        {
-            elements[i] = this->Get(startIndex + i - 1);
-        }
-        MutableListSequence<T> *result = new MutableListSequence<T>(elements, endIndex - startIndex + 1);
-        delete []elements;
+        LinkedList<T> *resultList = this->list->GetSubList(startIndex, endIndex);
+        MutableListSequence<T> *result = new MutableListSequence<T>(resultList);
+        result->list = resultList;
         return result;
     }
+
 };
 
 template <typename T>
@@ -137,29 +129,24 @@ public:
 
     ImmutableListSequence<T> *Concat(Sequence<T> &seq) override
     {
-        ImmutableListSequence<T> *preResult = new ImmutableListSequence<T>(static_cast<ImmutableListSequence<T> &> (*this));
+        LinkedList<T> *resultList = new LinkedList<T>;
+        for (int i = 0; i < this->GetLength(); i++)
+        {
+            resultList->Append(this->Get(i));
+        }
         for (int i = 0; i < seq.GetLength(); i++)
         {
-            preResult->Append(seq.Get(i));
+            resultList->Append(seq.Get(i));
         }
-        ImmutableListSequence<T> *result = new ImmutableListSequence<T> (*preResult);
-        delete preResult;
+        ImmutableListSequence<T> *result = new ImmutableListSequence<T>(resultList);
         return result;
     }
 
     ImmutableListSequence<T> *GetSubSequence(int startIndex, int endIndex) override
     {
-        if (startIndex * endIndex < 0 || startIndex >= this->list->GetLength() || endIndex > startIndex)
-        {
-            throw std::invalid_argument("Index out of range");
-        }
-        T *elements = new T[endIndex - startIndex + 1];
-        for (int i = 0; i < endIndex - startIndex + 1; i++)
-        {
-            elements[i] = this->Get(startIndex + i - 1);
-        }
-        ImmutableListSequence<T> *result = new ImmutableListSequence<T>(elements, endIndex - startIndex + 1);
-        delete []elements;
+        LinkedList<T> *resultList = this->list->GetSubList(startIndex, endIndex);
+        ImmutableListSequence<T> *result = new ImmutableListSequence<T>(resultList);
+        result->list = resultList;
         return result;
     }
 };
