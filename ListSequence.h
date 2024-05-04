@@ -101,7 +101,7 @@ public:
 
     MutableListSequence<T> *GetSubSequence(int startIndex, int endIndex) override
     {
-        if (startIndex < 0 || endIndex < 0 || startIndex >= this->size || endIndex < startIndex)
+        if (startIndex < 0 || endIndex < 0 || startIndex >= this->list->GetLength() || endIndex < startIndex)
         {
             throw std::invalid_argument("Invalid argument");
         }
@@ -143,7 +143,7 @@ public:
 
     ImmutableListSequence<T> *GetSubSequence(int startIndex, int endIndex) override
     {
-        if (startIndex < 0 || endIndex < 0 || startIndex >= this->size || endIndex < startIndex)
+        if (startIndex < 0 || endIndex < 0 || startIndex >= this->list->GetLength() || endIndex < startIndex)
         {
             throw std::invalid_argument("Invalid argument");
         }
