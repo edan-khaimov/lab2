@@ -74,7 +74,7 @@ public:
             throw std::out_of_range("Invalid argument");
         }
         T* newElements = new T[newSize];
-        for (int i = 0; i < (this->size > size ? size : this->size); i++)
+        for (int i = 0; i < (this->size > newSize ? newSize : this->size); i++)
         {
             newElements[i] = this->elements[i];
         }
