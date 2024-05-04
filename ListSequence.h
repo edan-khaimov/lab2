@@ -76,11 +76,6 @@ public:
         result->list->InsertAt(item, index);
         return result;
     }
-
-    void Print()
-    {
-        this->list->printList();
-    }
 };
 
 template <typename T>
@@ -106,6 +101,10 @@ public:
 
     MutableListSequence<T> *GetSubSequence(int startIndex, int endIndex) override
     {
+        if (startIndex < 0 || endIndex < 0 || startIndex >= this->size || endIndex < startIndex)
+        {
+            throw std::invalid_argument("Invalid argument");
+        }
         LinkedList<T> *resultList = this->list->GetSubList(startIndex, endIndex);
         MutableListSequence<T> *result = new MutableListSequence<T>(resultList);
         result->list = resultList;
@@ -144,6 +143,10 @@ public:
 
     ImmutableListSequence<T> *GetSubSequence(int startIndex, int endIndex) override
     {
+        if (startIndex < 0 || endIndex < 0 || startIndex >= this->size || endIndex < startIndex)
+        {
+            throw std::invalid_argument("Invalid argument");
+        }
         LinkedList<T> *resultList = this->list->GetSubList(startIndex, endIndex);
         ImmutableListSequence<T> *result = new ImmutableListSequence<T>(resultList);
         result->list = resultList;

@@ -83,11 +83,6 @@ public:
         result->array->Set(index, item);
         return result;
     }
-
-    void Print()
-    {
-        this->array->printArray();
-    }
 };
 
 template <typename T>
@@ -113,6 +108,10 @@ public:
 
     MutableArraySequence<T> *GetSubSequence (int startIndex, int endIndex) override
     {
+        if (startIndex < 0 || endIndex < 0 || startIndex >= this->size || endIndex < startIndex)
+        {
+            throw std::invalid_argument("Invalid argument");
+        }
         DynamicArray<T> *resultArray = new DynamicArray<T>(endIndex - startIndex);
         for (int i = 0; i < endIndex - startIndex + 1; i++)
         {
@@ -154,6 +153,10 @@ public:
 
     ImmutableArraySequence<T> *GetSubSequence (int startIndex, int endIndex) override
     {
+        if (startIndex < 0 || endIndex < 0 || startIndex >= this->size || endIndex < startIndex)
+        {
+            throw std::invalid_argument("Invalid argument");
+        }
         DynamicArray<T> *resultArray = new DynamicArray<T>(endIndex - startIndex);
         for (int i = 0; i < endIndex - startIndex + 1; i++)
         {

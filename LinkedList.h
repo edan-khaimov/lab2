@@ -29,9 +29,9 @@ public:
 
     LinkedList(T* items, int count) : LinkedList()
     {
-        if (count < 0)
+        if (count < 0 || items == nullptr)
         {
-            throw std::invalid_argument("Invalid count");
+            throw std::invalid_argument("Invalid argument");
         }
         for (int i = 0; i < count; i++)
         {
@@ -91,7 +91,7 @@ public:
         Node *current = this->head;
         if (index < 0 || index >= this->size)
         {
-            throw std::invalid_argument("Index out of range");
+            throw std::invalid_argument("Invalid argument");
         }
         for (int i = 0; i < index; i++)
         {
@@ -104,7 +104,7 @@ public:
     {
         if (startIndex < 0 || endIndex < 0 || startIndex >= this->size || endIndex < startIndex)
         {
-            throw std::invalid_argument("Index out of range");
+            throw std::invalid_argument("Invalid argument");
         }
         LinkedList<T> *resultList = new LinkedList<T>();
         for (int i = startIndex; i < endIndex; i++)
@@ -148,7 +148,7 @@ public:
     {
         if (index < 0 || index >= this->size)
         {
-            throw std::invalid_argument("Index out of range");
+            throw std::invalid_argument("Invalid argument");
         }
         Node *newElement = new Node(item);
         Node *current = this->head;
@@ -173,16 +173,6 @@ public:
             resultList->Append(list.Get(i));
         }
         return resultList;
-    }
-
-    void printList()
-    {
-        Node *current = this->head;
-        for (int i = 0; i < this->size; i++)
-        {
-            std::cout << i + 1 << " element is: " << current->data << std::endl;
-            current = current->pNext;
-        }
     }
 };
 

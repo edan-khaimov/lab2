@@ -28,7 +28,7 @@ public:
     {
         if (items == nullptr)
         {
-            throw std::out_of_range("Invalid argument in constructor");
+            throw std::invalid_argument("Invalid argument in constructor");
         }
         for (int i = 0; i < count; i++)
         {
@@ -36,9 +36,7 @@ public:
         }
     }
 
-    DynamicArray(const DynamicArray<T> &dynamicArray) : DynamicArray(dynamicArray.elements, dynamicArray.size)
-    {
-    }
+    DynamicArray(const DynamicArray<T> &dynamicArray) : DynamicArray(dynamicArray.elements, dynamicArray.size) {}
 
     ~DynamicArray()
     {
@@ -73,7 +71,7 @@ public:
     {
         if (newSize < 0)
         {
-            throw std::out_of_range("Invalid size");
+            throw std::out_of_range("Invalid argument");
         }
         T* newElements = new T[newSize];
         for (int i = 0; i < (this->size > size ? size : this->size); i++)
@@ -83,14 +81,6 @@ public:
         delete[] this->elements;
         this->elements = newElements;
         this->size = newSize;
-    }
-
-    void printArray()
-    {
-        for (int i = 0; i < this->size; i++)
-        {
-            std::cout << i << " element is: " << this->elements[i] << std::endl;
-        }
     }
 };
 
