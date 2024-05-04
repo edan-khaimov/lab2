@@ -102,7 +102,7 @@ public:
 
     LinkedList<T>* GetSubList(int startIndex, int endIndex)
     {
-        if (startIndex < 0 || endIndex < 0 || startIndex >= this->size || endIndex < startIndex)
+        if (startIndex < 0 || endIndex < 0 || endIndex >= this->size || endIndex < startIndex)
         {
             throw std::invalid_argument("Invalid argument");
         }
@@ -181,10 +181,10 @@ public:
         {
             throw std::invalid_argument ("Invalid argument");
         }
-        Node *result = head;
+        Node *result = this->head;
         for (int i = 0; i < index; i++)
         {
-            result = result->next;
+            result = result->pNext;
         }
         return result->data;
     }
