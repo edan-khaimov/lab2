@@ -36,22 +36,22 @@ public:
         delete this->array;
     }
 
-    T GetFirst() override
+    T GetFirst() const override
     {
         return this->array->Get(0);
     }
 
-    T GetLast() override
+    T GetLast() const override
     {
         return this->array->Get(this->array->GetSize() - 1);
     }
 
-    T Get(int index) override
+    T Get(int index) const override
     {
         return this->array->Get(index);
     }
 
-    int GetLength() override
+    int GetLength() const override
     {
         return this->array->GetSize();
     }
@@ -83,6 +83,11 @@ public:
         result->array->Set(index, item);
         return result;
     }
+
+    T &operator[] (int index) override
+    {
+        return (*(GetInstance ()->array))[index];
+    }
 };
 
 template <typename T>
@@ -106,7 +111,7 @@ public:
         return this;
     }
 
-    MutableArraySequence<T> *GetSubSequence (int startIndex, int endIndex) override
+    MutableArraySequence<T> *GetSubSequence (int startIndex, int endIndex) const override
     {
         if (startIndex < 0 || endIndex < 0 || startIndex >= this->array->GetSize() || endIndex < startIndex)
         {
@@ -151,7 +156,7 @@ public:
         return result;
     }
 
-    ImmutableArraySequence<T> *GetSubSequence (int startIndex, int endIndex) override
+    ImmutableArraySequence<T> *GetSubSequence (int startIndex, int endIndex) const override
     {
         if (startIndex < 0 || endIndex < 0 || startIndex >= this->array->GetSize() || endIndex < startIndex)
         {

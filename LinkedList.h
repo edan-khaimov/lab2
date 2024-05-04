@@ -174,6 +174,20 @@ public:
         }
         return resultList;
     }
+
+    T &operator[] (int index)
+    {
+        if (index > this->size || index < 0)
+        {
+            throw std::invalid_argument ("Invalid argument");
+        }
+        Node *result = head;
+        for (int i = 0; i < index; i++)
+        {
+            result = result->next;
+        }
+        return result->data;
+    }
 };
 
 #endif

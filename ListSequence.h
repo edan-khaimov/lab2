@@ -36,22 +36,22 @@ public:
         delete this->list;
     }
 
-    T GetFirst() override
+    T GetFirst() const override
     {
         return this->list->GetFirst();
     }
 
-    T GetLast() override
+    T GetLast() const override
     {
         return this->list->GetLast();
     }
 
-    T Get(int index) override
+    T Get(int index) const override
     {
         return this->list->Get(index);
     }
 
-    int GetLength() override
+    int GetLength() const override
     {
         return this->list->GetLength();
     }
@@ -76,6 +76,11 @@ public:
         result->list->InsertAt(item, index);
         return result;
     }
+
+    T &operator[] (int index) override
+    {
+        return (*(this->list))[index];
+    }
 };
 
 template <typename T>
@@ -99,7 +104,7 @@ public:
         return this;
     }
 
-    MutableListSequence<T> *GetSubSequence(int startIndex, int endIndex) override
+    MutableListSequence<T> *GetSubSequence(int startIndex, int endIndex) const override
     {
         if (startIndex < 0 || endIndex < 0 || startIndex >= this->list->GetLength() || endIndex < startIndex)
         {
@@ -141,7 +146,7 @@ public:
         return result;
     }
 
-    ImmutableListSequence<T> *GetSubSequence(int startIndex, int endIndex) override
+    ImmutableListSequence<T> *GetSubSequence(int startIndex, int endIndex) const override
     {
         if (startIndex < 0 || endIndex < 0 || startIndex >= this->list->GetLength() || endIndex < startIndex)
         {

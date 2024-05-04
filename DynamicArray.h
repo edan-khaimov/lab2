@@ -82,6 +82,15 @@ public:
         this->elements = newElements;
         this->size = newSize;
     }
+
+    T &operator[] (int index)
+    {
+        if (size <= index)
+        {
+            throw std::invalid_argument("Invalid argument");
+        }
+        return elements[index];
+    }
 };
 
 #endif
