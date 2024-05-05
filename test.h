@@ -5,6 +5,7 @@
 #include "tests/TestLinkedList.h"
 #include "tests/TestListSequence.h"
 #include "tests/TestArraySequence.h"
+#include "tests/TestOverloadOperators.h"
 
 void testDynamicArray()
 {
@@ -59,6 +60,13 @@ void testArraySequence()
     testArraySequenceInsertAt();
     testArraySequenceConcat();
     testArraySequenceGetSubSequence();
+}
+
+void testOperators()
+{
+    testIndexOperator();
+    testEqualOperator();
+    testNotEqualOperator();
 }
 
 #endif

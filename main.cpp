@@ -1,10 +1,12 @@
 #include <iostream>
-#include "LinkedList.h"
-#include "DynamicArray.h"
-#include "Sequence.h"
-#include "ListSequence.h"
+#include "test.h"
 
 int main()
 {
+    testDynamicArray();
+    testLinkedList();
+    testArraySequence();
+    testListSequence();
+    testOperators();
     return 0;
 }
