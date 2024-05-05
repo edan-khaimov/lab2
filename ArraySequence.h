@@ -26,9 +26,14 @@ public:
         this->array = new DynamicArray<T>(*seq.array);
     }
 
-    ArraySequence(DynamicArray<T>* array)
+    ArraySequence(DynamicArray<T> *array)
     {
         this->array = array;
+    }
+
+    ArraySequence(const DynamicArray<T> &array)
+    {
+        this->array = new DynamicArray<T>(array);
     }
 
     virtual ~ArraySequence()
@@ -69,7 +74,7 @@ public:
         ArraySequence<T> *result = GetInstance();
         result->array->Resize(result->array->GetSize() + 1);
         T current = this->array->Get(0);
-        for (int i = this->array->GetSize() - 1; i > 0; i--)
+        for (int i = result->array->GetSize() - 1; i > 0; i--)
         {
             result->array->Set(i, result->array->Get(i - 1));
         }
@@ -80,6 +85,11 @@ public:
     ArraySequence<T> *InsertAt(T item, int index) override
     {
         ArraySequence<T> *result = GetInstance();
+        result->array->Resize(this->array->GetSize() + 1);
+        for (int i = result->array->GetSize() - 1; i > index; i--)
+        {
+            result->array->Set(i, result->array->Get(i - 1));
+        }
         result->array->Set(index, item);
         return result;
     }
@@ -120,7 +130,7 @@ public:
         DynamicArray<T> *resultArray = new DynamicArray<T>(endIndex - startIndex);
         for (int i = 0; i < endIndex - startIndex + 1; i++)
         {
-            resultArray->Set(startIndex + i, this->array->Get(i));
+            resultArray->Set(i, this->array->Get(startIndex + i));
         }
         MutableArraySequence<T> *result = new MutableArraySequence<T>(resultArray);
         result->array = resultArray;
@@ -165,7 +175,7 @@ public:
         DynamicArray<T> *resultArray = new DynamicArray<T>(endIndex - startIndex);
         for (int i = 0; i < endIndex - startIndex + 1; i++)
         {
-            resultArray->Set(startIndex + i, this->array->Get(i));
+            resultArray->Set(i, this->array->Get(startIndex + i));
         }
         ImmutableArraySequence<T> *result = new ImmutableArraySequence<T>(resultArray);
         result->array = resultArray;
