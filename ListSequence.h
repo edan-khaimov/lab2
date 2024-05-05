@@ -31,6 +31,11 @@ public:
         this->list = list;
     }
 
+    ListSequence (const LinkedList<T>& list)
+    {
+        this->list = new LinkedList<T>(list);
+    }
+
     ~ListSequence()
     {
         delete this->list;
@@ -66,7 +71,7 @@ public:
     ListSequence<T> *Prepend(T item) override
     {
         ListSequence<T> *result = GetInstance();
-        result->list->Append(item);
+        result->list->Prepend(item);
         return result;
     }
 
