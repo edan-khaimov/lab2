@@ -46,6 +46,14 @@ public:
         }
         return seq.GetLength() != this->GetLength();
     }
+
+    void Print()
+    {
+        for (int i = 0; i < this->GetLength(); i++)
+        {
+            std::cout << (*this)[i] << std::endl;
+        }
+    }
 };
 
 #endif

@@ -80,8 +80,8 @@ void testArraySequenceGetLength()
 
 void testArraySequenceAppend()
 {
-    int arr[6] = {1, 2, 3, 4, 5, 6};
-    MutableArraySequence<int> test1(arr, 6);
+    double arr[6] = {1.0, 2.0, 3.0, 4.0, 5.0, 6.0};
+    MutableArraySequence<double> test1(arr, 6);
     test1.Append(12);
     assert(test1.GetLength() == 6 + 1);
     for (int i = 0; i < test1.GetLength() - 1; i++)
@@ -90,10 +90,14 @@ void testArraySequenceAppend()
     }
     assert(test1[test1.GetLength() - 1] == 12);
 
-    ImmutableArraySequence<int> test2(arr, 6);
-    ImmutableArraySequence<int> *test3 = static_cast<ImmutableArraySequence<int> *>(test2.Append(12));
+    ImmutableArraySequence<double> test2(arr, 6);
+    ImmutableArraySequence<double> *test3 = static_cast<ImmutableArraySequence<double> *>(test2.Append(12));
     assert(test2.GetLength() == 6);
     assert(test3->GetLength() == 7);
+    for (int i = 0; i < test2.GetLength(); i++)
+    {
+        assert(test2[i] == arr[i]);
+    }
     for (int i = 0; i < test2.GetLength(); i++)
     {
         assert(test3->Get(i) == arr[i]);
