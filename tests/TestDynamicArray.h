@@ -1,7 +1,7 @@
 #ifndef TEST_DYNAMIC_ARRAY_H
 #define TEST_DYNAMIC_ARRAY_H
 
-#include <cassert>
+#include <assert.h>
 #include "../DynamicArray.h"
 
 void testDynamicArrayConstructors()

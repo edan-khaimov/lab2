@@ -1,7 +1,7 @@
 #ifndef TEST_OVERLOAD_OPERATORS_H
 #define TEST_OVERLOAD_OPERATORS_H
 
-#include <cassert>
+#include <assert.h>
 #include "../ArraySequence.h"
 #include "../ListSequence.h"
 

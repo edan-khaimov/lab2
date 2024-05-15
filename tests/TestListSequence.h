@@ -1,7 +1,7 @@
 #ifndef TEST_LIST_SEQUENCE_H
 #define TEST_LIST_SEQUENCE_H
 
-#include <cassert>
+#include <assert.h>
 #include "../ListSequence.h"
 
 void testListSequenceConstructors()

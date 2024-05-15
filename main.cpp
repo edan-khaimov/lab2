@@ -72,7 +72,10 @@ int main()
                 break;
         }
         userChoice = selectSequenceType();
-        type = selectElementsType();
+        if (userChoice != 0)
+        {
+            type = selectElementsType();
+        }
     }
     return 0;
 }

@@ -1,7 +1,7 @@
 #ifndef TEST_ARRAY_SEQUENCE_H
 #define TEST_ARRAY_SEQUENCE_H
 
-#include <cassert>
+#include <assert.h>
 #include "../ArraySequence.h"
 
 void testArraySequenceConstructors()

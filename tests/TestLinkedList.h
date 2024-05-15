@@ -1,7 +1,7 @@
 #ifndef TEST_LINKED_LIST_H
 #define TEST_LINKED_LIST_H
 
-#include <cassert>
+#include <assert.h>
 #include "../LinkedList.h"
 
 void testLinkedListConstructors()
