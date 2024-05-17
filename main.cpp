@@ -11,9 +11,10 @@ int main()
     testOperators();
 
     int userChoice = selectSequenceType();
+    int type;
     if (userChoice != 0)
     {
-        int type = selectElementsType();
+        type = selectElementsType();
     }
     MutableListSequence<int> listInt;
     MutableArraySequence<int> arrayInt;
