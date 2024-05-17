@@ -28,7 +28,7 @@ public:
 
     ArraySequence(DynamicArray<T> *array)
     {
-        this->array = array;
+        this->array = new DynamicArray<T>(*array);
     }
 
     ArraySequence(const DynamicArray<T> &array)

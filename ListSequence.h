@@ -28,7 +28,7 @@ public:
 
     ListSequence(LinkedList<T> *list)
     {
-        this->list = list;
+        this->list = new LinkedList<T>(*list);
     }
 
     ListSequence (const LinkedList<T>& list)
