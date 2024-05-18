@@ -10,6 +10,7 @@ int main()
     testArraySequence();
     testListSequence();
     testOperators();
+    testMapReduce();
 
     int userChoice = selectSequenceType();
     int type;

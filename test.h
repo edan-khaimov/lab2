@@ -6,6 +6,7 @@
 #include "tests/TestListSequence.h"
 #include "tests/TestArraySequence.h"
 #include "tests/TestOverloadOperators.h"
+#include "tests/testMapReduce.h"
 
 void testDynamicArray()
 {
@@ -67,6 +68,12 @@ void testOperators()
     testIndexOperator();
     testEqualOperator();
     testNotEqualOperator();
+}
+
+void testMapReduce()
+{
+    testMap();
+    testReduce();
 }
 
 #endif
