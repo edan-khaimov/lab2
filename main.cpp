@@ -1,6 +1,7 @@
 #include <iostream>
 #include "test.h"
 #include "UI.h"
+#include "MyString.h"
 
 int main()
 {
@@ -22,8 +23,8 @@ int main()
     MutableArraySequence<double> arrayDouble;
     MutableListSequence<char> listChar;
     MutableArraySequence<char> arrayChar;
-    MutableListSequence<std::string> listString;
-    MutableArraySequence<std::string> arrayString;
+    MutableListSequence<MyString> listString;
+    MutableArraySequence<MyString> arrayString;
 
 
     while (userChoice != 0)
