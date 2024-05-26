@@ -3,6 +3,8 @@
 
 #include <string>
 #include "ListSequence.h"
+#include "tests/testMapReduce.h"
+#include "MapReduce.h"
 
 int selectSequenceType()
 {
@@ -32,6 +34,7 @@ int selectElementsType()
     {
         throw std::invalid_argument("Unknown type");
     }
+    return n;
 }
 
 int selectOperation(int type)
@@ -90,6 +93,7 @@ void sequenceInterface(Sequence<T> &sequence, int type)
     int operation = selectOperation(type);
     T item;
     int index;
+    MutableListSequence<T> result;
     switch (operation)
     {
         case 1:
