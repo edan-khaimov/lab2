@@ -4,8 +4,6 @@
 template <typename T>
 class Sequence
 {
-protected:
-    virtual Sequence<T> *GetInstance() = 0;
 public:
     virtual T GetFirst() const = 0;
     virtual T GetLast() const = 0;
@@ -47,34 +45,6 @@ public:
             }
         }
         return seq.GetLength() != this->GetLength();
-    }
-
-    void Print()
-    {
-        for (int i = 0; i < this->GetLength(); i++)
-        {
-            std::cout << (*this)[i] << std::endl;
-        }
-    }
-
-    template<typename U>
-    Sequence<U> &Map(U (*func)(T))
-    {
-        Sequence<T> *result = GetInstance();
-        for (int i = 0; i < this->GetLength(); i++)
-        {
-            (*result)[i] = (*func)(this->Get(i));
-        }
-        return *result;
-    }
-
-    T Reduce(T (*func)(T, T), T start)
-    {
-        for (int i = 0; i < this->GetLength(); i++)
-        {
-            start = (*func)(start, this->Get(i));
-        }
-        return start;
     }
 };
 

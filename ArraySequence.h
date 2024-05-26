@@ -26,6 +26,15 @@ public:
         this->array = new DynamicArray<T>(*seq.array);
     }
 
+    ArraySequence(const Sequence<T> &seq)
+    {
+        this->array = new DynamicArray<T>(seq.GetLength());
+        for (int i = 0; i < seq.GetLength(); i++)
+        {
+            this->array->Set(i, seq.Get(i));
+        }
+    }
+
     ArraySequence(DynamicArray<T> *array)
     {
         this->array = new DynamicArray<T>(*array);

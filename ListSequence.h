@@ -26,6 +26,15 @@ public:
         this->list = new LinkedList<T>(*seq.list);
     }
 
+    ListSequence(const Sequence<T> &seq)
+    {
+        this->list = new LinkedList<T>();
+        for (int i = 0; i < seq.GetLength(); i++)
+        {
+            this->list->Append(seq.Get(i));
+        }
+    }
+
     ListSequence(LinkedList<T> *list)
     {
         this->list = new LinkedList<T>(*list);
