@@ -154,12 +154,6 @@ public:
         return this->str[index];
     }
 
-    MyString(MyString&& other)
-    {
-        this->length = other.length;
-        this->str = other.str;
-        other.str = nullptr;
-    }
 };
 
 #endif
