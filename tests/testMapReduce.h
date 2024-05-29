@@ -20,7 +20,7 @@ void testMap()
     assert(test1.GetLength() == 8);
     for (int i = 0; i < test1.GetLength(); i++)
     {
-        assert(test1.Get(i) == b[i]);
+        assert(test2.Get(i) == b[i]);
     }
 }
 

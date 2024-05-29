@@ -72,10 +72,9 @@ void testOperators()
 
 void testMapReduce()
 {
-    /*
     testMap();
     testReduce();
-     */
+    testWhere();
 }
 
 #endif
