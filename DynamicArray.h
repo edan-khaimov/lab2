@@ -60,7 +60,7 @@ public:
 
     void Set(int index, T value)
     {
-        if (index < 0 || index > this->size)
+        if (index < 0 || index >= this->size)
         {
             throw std::out_of_range("Invalid argument");
         }
