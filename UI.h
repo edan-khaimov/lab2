@@ -50,7 +50,7 @@ int selectOperation(int type)
     std::cout << "5 - append element to " << typeOfSequence << std::endl;
     std::cout << "6 - prepend element to " << typeOfSequence << std::endl;
     std::cout << "7 - insert element at index into " << typeOfSequence << std::endl;
-    std::cout << "8 - get sub " << typeOfSequence << "from source " << typeOfSequence << std::endl;
+    std::cout << "8 - get sub " << typeOfSequence << " " << "from source " << typeOfSequence << std::endl;
     std::cout << "9 - concatenate two " << typeOfSequence << "s" << std::endl;
     std::cin >> n;
     if (n < 1 || n > 9)
