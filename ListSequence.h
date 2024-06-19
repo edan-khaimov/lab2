@@ -120,7 +120,7 @@ public:
 
     MutableListSequence<T> *GetSubSequence(int startIndex, int endIndex) const override
     {
-        if (startIndex < 0 || endIndex < 0 || endIndex >= this->list->GetLength() || endIndex <= startIndex)
+        if (startIndex < 0 || endIndex < 0 || endIndex >= this->list->GetLength() || endIndex < startIndex)
         {
             throw std::invalid_argument("Invalid argument");
         }
