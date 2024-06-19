@@ -191,7 +191,7 @@ void testListSequenceGetSubSequence()
     int arr[6] = {1, 2, 3, 4, 5, 6};
     MutableListSequence<int> test1(arr, 6);
     MutableListSequence<int> *test2 = test1.GetSubSequence(1, 4);
-    assert(test2->GetLength() == 4 - 1);
+    assert(test2->GetLength() == 4);
     for (int i = 0; i < test2->GetLength(); i++)
     {
         assert(test2->Get(i) == arr[i + 1]);

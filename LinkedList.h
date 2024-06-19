@@ -107,7 +107,7 @@ public:
             throw std::invalid_argument("Invalid argument");
         }
         LinkedList<T> *resultList = new LinkedList<T>();
-        for (int i = startIndex; i < endIndex; i++)
+        for (int i = startIndex; i <= endIndex; i++)
         {
             resultList->Append(this->Get(i));
         }
